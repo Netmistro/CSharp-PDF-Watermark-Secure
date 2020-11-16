@@ -37,7 +37,7 @@ namespace PDF_Sample
                 XFont font = new XFont("Verdana", 20, XFontStyle.Bold);
 
                 // Watermark String text
-                string watermark = txtWatermark.Text;
+                string watermark = rtbWatermark.Text;
 
                 for (int idx = 0; idx < document.Pages.Count; idx++)
                 {
@@ -147,11 +147,21 @@ namespace PDF_Sample
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+
+            // Load Product Version
+            PrintProductVersion();
+
             // Default watermark string, loaded every time
             string watermarkText = "RADIAN H.A. Limited";
-            txtWatermark.Text = watermarkText;
+            rtbWatermark.Text = watermarkText;
             chkOpen.Checked = true;
             rbRed.Checked = true;
+
+            
+        }
+        private void PrintProductVersion()
+        {
+            lblVersionNumber.Text = "A. Bradshaw - Ver#: " + Application.ProductVersion;
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)

@@ -33,20 +33,20 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.label1 = new System.Windows.Forms.Label();
             this.txtFilePath = new System.Windows.Forms.TextBox();
-            this.txtWatermark = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblVersionNumber = new System.Windows.Forms.Label();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.chkOpen = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.rbRed = new System.Windows.Forms.RadioButton();
             this.rbOrange = new System.Windows.Forms.RadioButton();
-            this.rbBlue = new System.Windows.Forms.RadioButton();
-            this.rbPink = new System.Windows.Forms.RadioButton();
             this.rbPurple = new System.Windows.Forms.RadioButton();
+            this.rbPink = new System.Windows.Forms.RadioButton();
+            this.rbRed = new System.Windows.Forms.RadioButton();
+            this.rbBlue = new System.Windows.Forms.RadioButton();
+            this.rtbWatermark = new System.Windows.Forms.RichTextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -89,16 +89,6 @@
             this.txtFilePath.Size = new System.Drawing.Size(340, 76);
             this.txtFilePath.TabIndex = 2;
             // 
-            // txtWatermark
-            // 
-            this.txtWatermark.AcceptsReturn = true;
-            this.txtWatermark.Location = new System.Drawing.Point(6, 42);
-            this.txtWatermark.Margin = new System.Windows.Forms.Padding(4);
-            this.txtWatermark.Multiline = true;
-            this.txtWatermark.Name = "txtWatermark";
-            this.txtWatermark.Size = new System.Drawing.Size(340, 76);
-            this.txtWatermark.TabIndex = 2;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -111,16 +101,15 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Text";
             // 
-            // label3
+            // lblVersionNumber
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(19, 500);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(122, 13);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Arnold Bradshaw 2020";
+            this.lblVersionNumber.AutoSize = true;
+            this.lblVersionNumber.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVersionNumber.Location = new System.Drawing.Point(19, 500);
+            this.lblVersionNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblVersionNumber.Name = "lblVersionNumber";
+            this.lblVersionNumber.Size = new System.Drawing.Size(0, 13);
+            this.lblVersionNumber.TabIndex = 1;
             // 
             // btnBrowse
             // 
@@ -179,6 +168,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.rtbWatermark);
             this.groupBox2.Controls.Add(this.rbOrange);
             this.groupBox2.Controls.Add(this.rbPurple);
             this.groupBox2.Controls.Add(this.rbPink);
@@ -186,7 +176,6 @@
             this.groupBox2.Controls.Add(this.rbBlue);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.btnPDF);
-            this.groupBox2.Controls.Add(this.txtWatermark);
             this.groupBox2.Controls.Add(this.chkOpen);
             this.groupBox2.Location = new System.Drawing.Point(16, 251);
             this.groupBox2.Name = "groupBox2";
@@ -194,17 +183,6 @@
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Watermark";
-            // 
-            // rbRed
-            // 
-            this.rbRed.AutoSize = true;
-            this.rbRed.Location = new System.Drawing.Point(7, 127);
-            this.rbRed.Name = "rbRed";
-            this.rbRed.Size = new System.Drawing.Size(49, 21);
-            this.rbRed.TabIndex = 6;
-            this.rbRed.TabStop = true;
-            this.rbRed.Text = "Red";
-            this.rbRed.UseVisualStyleBackColor = true;
             // 
             // rbOrange
             // 
@@ -217,16 +195,16 @@
             this.rbOrange.Text = "Orange";
             this.rbOrange.UseVisualStyleBackColor = true;
             // 
-            // rbBlue
+            // rbPurple
             // 
-            this.rbBlue.AutoSize = true;
-            this.rbBlue.Location = new System.Drawing.Point(154, 127);
-            this.rbBlue.Name = "rbBlue";
-            this.rbBlue.Size = new System.Drawing.Size(50, 21);
-            this.rbBlue.TabIndex = 6;
-            this.rbBlue.TabStop = true;
-            this.rbBlue.Text = "Blue";
-            this.rbBlue.UseVisualStyleBackColor = true;
+            this.rbPurple.AutoSize = true;
+            this.rbPurple.Location = new System.Drawing.Point(281, 127);
+            this.rbPurple.Name = "rbPurple";
+            this.rbPurple.Size = new System.Drawing.Size(63, 21);
+            this.rbPurple.TabIndex = 6;
+            this.rbPurple.TabStop = true;
+            this.rbPurple.Text = "Purple";
+            this.rbPurple.UseVisualStyleBackColor = true;
             // 
             // rbPink
             // 
@@ -239,16 +217,35 @@
             this.rbPink.Text = "Pink";
             this.rbPink.UseVisualStyleBackColor = true;
             // 
-            // rbPurple
+            // rbRed
             // 
-            this.rbPurple.AutoSize = true;
-            this.rbPurple.Location = new System.Drawing.Point(281, 127);
-            this.rbPurple.Name = "rbPurple";
-            this.rbPurple.Size = new System.Drawing.Size(63, 21);
-            this.rbPurple.TabIndex = 6;
-            this.rbPurple.TabStop = true;
-            this.rbPurple.Text = "Purple";
-            this.rbPurple.UseVisualStyleBackColor = true;
+            this.rbRed.AutoSize = true;
+            this.rbRed.Location = new System.Drawing.Point(7, 127);
+            this.rbRed.Name = "rbRed";
+            this.rbRed.Size = new System.Drawing.Size(49, 21);
+            this.rbRed.TabIndex = 6;
+            this.rbRed.TabStop = true;
+            this.rbRed.Text = "Red";
+            this.rbRed.UseVisualStyleBackColor = true;
+            // 
+            // rbBlue
+            // 
+            this.rbBlue.AutoSize = true;
+            this.rbBlue.Location = new System.Drawing.Point(154, 127);
+            this.rbBlue.Name = "rbBlue";
+            this.rbBlue.Size = new System.Drawing.Size(50, 21);
+            this.rbBlue.TabIndex = 6;
+            this.rbBlue.TabStop = true;
+            this.rbBlue.Text = "Blue";
+            this.rbBlue.UseVisualStyleBackColor = true;
+            // 
+            // rtbWatermark
+            // 
+            this.rtbWatermark.Location = new System.Drawing.Point(11, 42);
+            this.rtbWatermark.Name = "rtbWatermark";
+            this.rtbWatermark.Size = new System.Drawing.Size(340, 79);
+            this.rtbWatermark.TabIndex = 7;
+            this.rtbWatermark.Text = "";
             // 
             // frmMain
             // 
@@ -258,7 +255,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblVersionNumber);
             this.Controls.Add(this.label4);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -283,9 +280,8 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtFilePath;
-        private System.Windows.Forms.TextBox txtWatermark;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblVersionNumber;
         private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label label4;
@@ -297,6 +293,7 @@
         private System.Windows.Forms.RadioButton rbPink;
         private System.Windows.Forms.RadioButton rbRed;
         private System.Windows.Forms.RadioButton rbBlue;
+        private System.Windows.Forms.RichTextBox rtbWatermark;
     }
 }
 

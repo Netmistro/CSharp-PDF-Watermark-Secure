@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("PDF Sample")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("PDF Watermark Generator")]
+[assembly: AssemblyDescription("PDF Watermark Generator")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("CADCom Services")]
 [assembly: AssemblyProduct("PDF Sample")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
