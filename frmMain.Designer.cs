@@ -41,21 +41,25 @@
             this.chkOpen = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtWatermark = new System.Windows.Forms.TextBox();
             this.rbOrange = new System.Windows.Forms.RadioButton();
             this.rbPurple = new System.Windows.Forms.RadioButton();
             this.rbPink = new System.Windows.Forms.RadioButton();
             this.rbRed = new System.Windows.Forms.RadioButton();
             this.rbBlue = new System.Windows.Forms.RadioButton();
-            this.rtbWatermark = new System.Windows.Forms.RichTextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.rbBack = new System.Windows.Forms.RadioButton();
+            this.rbFront = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnPDF
             // 
             this.btnPDF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.btnPDF.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPDF.Location = new System.Drawing.Point(7, 166);
+            this.btnPDF.Location = new System.Drawing.Point(392, 311);
             this.btnPDF.Margin = new System.Windows.Forms.Padding(4);
             this.btnPDF.Name = "btnPDF";
             this.btnPDF.Size = new System.Drawing.Size(110, 35);
@@ -73,7 +77,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label1.Location = new System.Drawing.Point(7, 26);
+            this.label1.Location = new System.Drawing.Point(11, 26);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 17);
@@ -82,7 +86,7 @@
             // 
             // txtFilePath
             // 
-            this.txtFilePath.Location = new System.Drawing.Point(11, 48);
+            this.txtFilePath.Location = new System.Drawing.Point(15, 48);
             this.txtFilePath.Margin = new System.Windows.Forms.Padding(4);
             this.txtFilePath.Multiline = true;
             this.txtFilePath.Name = "txtFilePath";
@@ -94,7 +98,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label2.Location = new System.Drawing.Point(7, 21);
+            this.label2.Location = new System.Drawing.Point(9, 21);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(33, 17);
@@ -105,16 +109,17 @@
             // 
             this.lblVersionNumber.AutoSize = true;
             this.lblVersionNumber.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVersionNumber.Location = new System.Drawing.Point(19, 500);
+            this.lblVersionNumber.Location = new System.Drawing.Point(392, 397);
             this.lblVersionNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblVersionNumber.Name = "lblVersionNumber";
-            this.lblVersionNumber.Size = new System.Drawing.Size(0, 13);
+            this.lblVersionNumber.Size = new System.Drawing.Size(45, 13);
             this.lblVersionNumber.TabIndex = 1;
+            this.lblVersionNumber.Text = "Version";
             // 
             // btnBrowse
             // 
             this.btnBrowse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.btnBrowse.Location = new System.Drawing.Point(10, 132);
+            this.btnBrowse.Location = new System.Drawing.Point(14, 132);
             this.btnBrowse.Name = "btnBrowse";
             this.btnBrowse.Size = new System.Drawing.Size(110, 35);
             this.btnBrowse.TabIndex = 0;
@@ -125,7 +130,7 @@
             // btnExit
             // 
             this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.btnExit.Location = new System.Drawing.Point(275, 478);
+            this.btnExit.Location = new System.Drawing.Point(392, 353);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(110, 35);
             this.btnExit.TabIndex = 2;
@@ -137,7 +142,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(62, 9);
+            this.label4.Location = new System.Drawing.Point(116, 9);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(269, 30);
@@ -147,7 +152,7 @@
             // chkOpen
             // 
             this.chkOpen.AutoSize = true;
-            this.chkOpen.Location = new System.Drawing.Point(124, 173);
+            this.chkOpen.Location = new System.Drawing.Point(395, 160);
             this.chkOpen.Name = "chkOpen";
             this.chkOpen.Size = new System.Drawing.Size(85, 21);
             this.chkOpen.TabIndex = 3;
@@ -168,26 +173,32 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.rtbWatermark);
+            this.groupBox2.Controls.Add(this.txtWatermark);
             this.groupBox2.Controls.Add(this.rbOrange);
             this.groupBox2.Controls.Add(this.rbPurple);
             this.groupBox2.Controls.Add(this.rbPink);
             this.groupBox2.Controls.Add(this.rbRed);
             this.groupBox2.Controls.Add(this.rbBlue);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.btnPDF);
-            this.groupBox2.Controls.Add(this.chkOpen);
             this.groupBox2.Location = new System.Drawing.Point(16, 251);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(369, 212);
+            this.groupBox2.Size = new System.Drawing.Size(369, 159);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Watermark";
             // 
+            // txtWatermark
+            // 
+            this.txtWatermark.Location = new System.Drawing.Point(13, 42);
+            this.txtWatermark.Multiline = true;
+            this.txtWatermark.Name = "txtWatermark";
+            this.txtWatermark.Size = new System.Drawing.Size(340, 79);
+            this.txtWatermark.TabIndex = 7;
+            // 
             // rbOrange
             // 
             this.rbOrange.AutoSize = true;
-            this.rbOrange.Location = new System.Drawing.Point(70, 127);
+            this.rbOrange.Location = new System.Drawing.Point(72, 127);
             this.rbOrange.Name = "rbOrange";
             this.rbOrange.Size = new System.Drawing.Size(70, 21);
             this.rbOrange.TabIndex = 6;
@@ -198,7 +209,7 @@
             // rbPurple
             // 
             this.rbPurple.AutoSize = true;
-            this.rbPurple.Location = new System.Drawing.Point(281, 127);
+            this.rbPurple.Location = new System.Drawing.Point(283, 127);
             this.rbPurple.Name = "rbPurple";
             this.rbPurple.Size = new System.Drawing.Size(63, 21);
             this.rbPurple.TabIndex = 6;
@@ -209,7 +220,7 @@
             // rbPink
             // 
             this.rbPink.AutoSize = true;
-            this.rbPink.Location = new System.Drawing.Point(218, 127);
+            this.rbPink.Location = new System.Drawing.Point(220, 127);
             this.rbPink.Name = "rbPink";
             this.rbPink.Size = new System.Drawing.Size(49, 21);
             this.rbPink.TabIndex = 6;
@@ -220,7 +231,7 @@
             // rbRed
             // 
             this.rbRed.AutoSize = true;
-            this.rbRed.Location = new System.Drawing.Point(7, 127);
+            this.rbRed.Location = new System.Drawing.Point(9, 127);
             this.rbRed.Name = "rbRed";
             this.rbRed.Size = new System.Drawing.Size(49, 21);
             this.rbRed.TabIndex = 6;
@@ -231,7 +242,7 @@
             // rbBlue
             // 
             this.rbBlue.AutoSize = true;
-            this.rbBlue.Location = new System.Drawing.Point(154, 127);
+            this.rbBlue.Location = new System.Drawing.Point(156, 127);
             this.rbBlue.Name = "rbBlue";
             this.rbBlue.Size = new System.Drawing.Size(50, 21);
             this.rbBlue.TabIndex = 6;
@@ -239,24 +250,52 @@
             this.rbBlue.Text = "Blue";
             this.rbBlue.UseVisualStyleBackColor = true;
             // 
-            // rtbWatermark
+            // groupBox3
             // 
-            this.rtbWatermark.Location = new System.Drawing.Point(11, 42);
-            this.rtbWatermark.Name = "rtbWatermark";
-            this.rtbWatermark.Size = new System.Drawing.Size(340, 79);
-            this.rtbWatermark.TabIndex = 7;
-            this.rtbWatermark.Text = "";
+            this.groupBox3.Controls.Add(this.rbBack);
+            this.groupBox3.Controls.Add(this.rbFront);
+            this.groupBox3.Location = new System.Drawing.Point(395, 57);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(127, 92);
+            this.groupBox3.TabIndex = 6;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Select File";
+            // 
+            // rbBack
+            // 
+            this.rbBack.AutoSize = true;
+            this.rbBack.Location = new System.Drawing.Point(6, 53);
+            this.rbBack.Name = "rbBack";
+            this.rbBack.Size = new System.Drawing.Size(52, 21);
+            this.rbBack.TabIndex = 6;
+            this.rbBack.TabStop = true;
+            this.rbBack.Text = "Back";
+            this.rbBack.UseVisualStyleBackColor = true;
+            // 
+            // rbFront
+            // 
+            this.rbFront.AutoSize = true;
+            this.rbFront.Location = new System.Drawing.Point(6, 26);
+            this.rbFront.Name = "rbFront";
+            this.rbFront.Size = new System.Drawing.Size(56, 21);
+            this.rbFront.TabIndex = 6;
+            this.rbFront.TabStop = true;
+            this.rbFront.Text = "Front";
+            this.rbFront.UseVisualStyleBackColor = true;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(405, 524);
+            this.ClientSize = new System.Drawing.Size(536, 425);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.chkOpen);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.lblVersionNumber);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.btnPDF);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -269,6 +308,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -293,7 +334,10 @@
         private System.Windows.Forms.RadioButton rbPink;
         private System.Windows.Forms.RadioButton rbRed;
         private System.Windows.Forms.RadioButton rbBlue;
-        private System.Windows.Forms.RichTextBox rtbWatermark;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.RadioButton rbBack;
+        private System.Windows.Forms.RadioButton rbFront;
+        private System.Windows.Forms.TextBox txtWatermark;
     }
 }
 

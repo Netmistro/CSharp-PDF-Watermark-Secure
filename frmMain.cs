@@ -36,71 +36,106 @@ namespace PDF_Sample
                 PdfDocument document = PdfReader.Open(sourceFile);
                 XFont font = new XFont("Verdana", 20, XFontStyle.Bold);
 
-                // Watermark String text
-                string watermark = rtbWatermark.Text;
+                // Create a dimmed red brush
+                int redColor;
+                int greenColor;
+                int blueColor;
 
-                for (int idx = 0; idx < document.Pages.Count; idx++)
+                if (rbRed.Checked == true)
                 {
-                    var page = document.Pages[idx];
-
-                    // Get an XGraphics object for drawing beneath the existing content
-                    var gfx = XGraphics.FromPdfPage(page, XGraphicsPdfPageOptions.Append);
-
-                    // Get the size (in points) of the text
-                    var size = gfx.MeasureString(watermark, font);
-
-                    // Define a rotation transformation at the center of the page
-                    gfx.TranslateTransform(page.Width / 2, page.Height / 2);
-                    gfx.RotateTransform(-Math.Atan(page.Height / page.Width) * 180 / Math.PI);
-                    gfx.TranslateTransform(-page.Width / 2, -page.Height / 2);
-
-                    // Create a string format
-                    var format = new XStringFormat();
-                    format.Alignment = XStringAlignment.Near;
-                    format.LineAlignment = XLineAlignment.Near;
-
-                    // Create a dimmed red brush
-                    int redColor;
-                    int greenColor;
-                    int blueColor;
-
-                    if (rbRed.Checked==true)
-                    {
-                        redColor = 255;
-                        greenColor = 102;
-                        blueColor = 102;
-                    }else if (rbOrange.Checked == true)
-                    {
-                        redColor = 255;
-                        greenColor = 204;
-                        blueColor = 153;
-                    }
-                    else if(rbBlue.Checked==true)
-                    {
-                        redColor = 0;
-                        greenColor = 128;
-                        blueColor = 255;
-                    }
-                    else if (rbPurple.Checked == true)
-                    {
-                        redColor = 204;
-                        greenColor = 153;
-                        blueColor = 255;
-                    }
-                    else
-                    {
-                        redColor = 255;
-                        greenColor = 153;
-                        blueColor = 255;
-                    }
-                    XBrush brush = new XSolidBrush(XColor.FromArgb(0, redColor, greenColor, blueColor));
-
-                    // Draw the string
-                    gfx.DrawString(watermark, font, brush,
-                    new XPoint((page.Width - size.Width) / 2, (page.Height - size.Height) / 2), format);
-
+                    redColor = 255;
+                    greenColor = 102;
+                    blueColor = 102;
+                }
+                else if (rbOrange.Checked == true)
+                {
+                    redColor = 255;
+                    greenColor = 204;
+                    blueColor = 153;
+                }
+                else if (rbBlue.Checked == true)
+                {
+                    redColor = 0;
+                    greenColor = 128;
+                    blueColor = 255;
+                }
+                else if (rbPurple.Checked == true)
+                {
+                    redColor = 204;
+                    greenColor = 153;
+                    blueColor = 255;
+                }
+                else
+                {
+                    redColor = 255;
+                    greenColor = 153;
+                    blueColor = 255;
                 }
 
+                // Watermark String text
+                string watermark = txtWatermark.Text;
+             
+                    for (int idx = 0; idx < document.Pages.Count; idx++)
+                    {
+                        var page = document.Pages[idx];
+
+                        if (rbFront.Checked == true)
+                        {
+                            // Get an XGraphics object for drawing beneath the existing content
+                            var gfx = XGraphics.FromPdfPage(page, XGraphicsPdfPageOptions.Append);
+
+                            // Get the size (in points) of the text
+                            var size = gfx.MeasureString(watermark, font);
+
+                            // Define a rotation transformation at the center of the page
+                            gfx.TranslateTransform(page.Width / 2, page.Height / 2);
+                            gfx.RotateTransform(-Math.Atan(page.Height / page.Width) * 180 / Math.PI);
+                            gfx.TranslateTransform(-page.Width / 2, -page.Height / 2);
+
+                            // Create a string format
+                            var format = new XStringFormat();
+                            format.Alignment = XStringAlignment.Near;
+                            format.LineAlignment = XLineAlignment.Near;
+
+
+                            XBrush brush = new XSolidBrush(XColor.FromArgb(0, redColor, greenColor, blueColor));
+
+                            // Draw the string
+                            gfx.DrawString(watermark, font, brush,
+                            new XPoint((page.Width - size.Width) / 2, (page.Height - size.Height) / 2), format);
+                            //Dispose Graphics
+                            gfx.Dispose();
+                        }
+                        else
+                        {
+                            // Get an XGraphics object for drawing beneath the existing content
+                            var gfx = XGraphics.FromPdfPage(page, XGraphicsPdfPageOptions.Prepend);
+
+                            // Get the size (in points) of the text
+                            var size = gfx.MeasureString(watermark, font);
+
+                            // Define a rotation transformation at the center of the page
+                            gfx.TranslateTransform(page.Width / 2, page.Height / 2);
+                            gfx.RotateTransform(-Math.Atan(page.Height / page.Width) * 180 / Math.PI);
+                            gfx.TranslateTransform(-page.Width / 2, -page.Height / 2);
+
+                            // Create a string format
+                            var format = new XStringFormat();
+                            format.Alignment = XStringAlignment.Near;
+                            format.LineAlignment = XLineAlignment.Near;
+
+
+                            XBrush brush = new XSolidBrush(XColor.FromArgb(0, redColor, greenColor, blueColor));
+
+                            // Draw the string
+                            gfx.DrawString(watermark, font, brush,
+                            new XPoint((page.Width - size.Width) / 2, (page.Height - size.Height) / 2), format);
+                            //Dispose of graphics
+                            gfx.Dispose();
+                        }
+
+                    }
+                      
                 PdfSecuritySettings ss = document.SecuritySettings;
                 // Setting one of the passwords automatically sets the security level to
                 // PdfDocumentSecurityLevel.Encrypted128Bit.
@@ -153,11 +188,10 @@ namespace PDF_Sample
 
             // Default watermark string, loaded every time
             string watermarkText = "RADIAN H.A. Limited";
-            rtbWatermark.Text = watermarkText;
+            txtWatermark.Text = watermarkText;
             chkOpen.Checked = true;
             rbRed.Checked = true;
-
-            
+            rbFront.Checked = true;            
         }
         private void PrintProductVersion()
         {
