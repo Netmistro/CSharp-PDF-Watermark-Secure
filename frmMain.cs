@@ -2,18 +2,30 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using PdfSharp.Drawing;
-using PdfSharp.Fonts;
-using PdfSharp.Internal;
-using PdfSharp.Pdf;
-using PdfSharp.Pdf.IO;
-using PdfSharp.Pdf.Security;
+using System.IO;
+using System.Diagnostics;
+using System.Security;
+using iText.IO.Font;
+using iText.IO.Font.Constants;
+using iText.Kernel.Colors;
+using iText.Kernel.Font;
+using iText.Kernel.Pdf;
+using iText.Kernel.Pdf.Canvas;
+using iText.Kernel.Pdf.Extgstate;
+using iText.Layout;
+using iText.Layout.Element;
+using iText.Layout.Properties;
+using iText.Layout.Font;
+using iText.Forms;
+using iText.Forms.Fields;
+using iText.Kernel.Geom;
+using iText.Kernel.Pdf.Action;
+using iText.Kernel.Pdf.Annot;
+
 
 namespace PDF_Sample
 {
@@ -24,165 +36,92 @@ namespace PDF_Sample
             InitializeComponent();
         }
 
+        private static byte[] USERPASS = System.Text.Encoding.Default.GetBytes("");
+        private static byte[] OWNERPASS = System.Text.Encoding.Default.GetBytes("mHfb6A7Rwp&b^$z2");
+
         private void btnPDF_Click(object sender, EventArgs e)
         {
-            // Variation 1: Draw a watermark as a text string
-            try
+            // Source File
+            string sourceFile = txtFilePath.Text;
+            // New filename
+            string newNonSecureFile = sourceFile.Substring(0, sourceFile.Length - 4) + " - Non-Secure.pdf";
+            // New secure file
+            string newSecureFile = sourceFile.Substring(0, sourceFile.Length - 4) + " - Secure.pdf";
+
+            //Initialize PDF document
+            PdfDocument pdfDoc = new PdfDocument(new PdfReader(sourceFile), new PdfWriter(newNonSecureFile));
+            Document document = new Document(pdfDoc);
+            Rectangle pageSize;
+            int n = pdfDoc.GetNumberOfPages();
+            for (int i = 1; i <= n; i++)
             {
-                // Source File
-                string sourceFile = txtFilePath.Text;
+                PdfPage page = pdfDoc.GetPage(i);
+                pageSize = page.GetPageSize();
+                //Draw watermark
+                Paragraph paragraph = new Paragraph(txtWatermark.Text).SetFontSize(30);
+                PdfCanvas over = new PdfCanvas(pdfDoc.GetPage(i).NewContentStreamBefore(), new PdfResources(), pdfDoc);
 
-                // Take in pdf from the form
-                PdfDocument document = PdfReader.Open(sourceFile);
-                XFont font = new XFont("Verdana", 20, XFontStyle.Bold);
-
-                // Create a dimmed red brush
-                int redColor;
-                int greenColor;
-                int blueColor;
-
+                // Watermark color selection
                 if (rbRed.Checked == true)
                 {
-                    redColor = 255;
-                    greenColor = 102;
-                    blueColor = 102;
+                    over.SetFillColor(ColorConstants.RED);
                 }
                 else if (rbOrange.Checked == true)
                 {
-                    redColor = 255;
-                    greenColor = 204;
-                    blueColor = 153;
+                    over.SetFillColor(ColorConstants.ORANGE);
                 }
                 else if (rbBlue.Checked == true)
                 {
-                    redColor = 0;
-                    greenColor = 128;
-                    blueColor = 255;
+                    over.SetFillColor(ColorConstants.BLUE);
                 }
-                else if (rbPurple.Checked == true)
+                else if (rbBlack.Checked == true)
                 {
-                    redColor = 204;
-                    greenColor = 153;
-                    blueColor = 255;
+                    over.SetFillColor(ColorConstants.BLACK);
                 }
                 else
                 {
-                    redColor = 255;
-                    greenColor = 153;
-                    blueColor = 255;
+                    over.SetFillColor(ColorConstants.MAGENTA);
                 }
+                over.SaveState();
+                Canvas canvasWatermark1 = new Canvas(over, pdfDoc.GetDefaultPageSize())
+                    .ShowTextAligned(paragraph, pageSize.GetWidth() / 2, pageSize.GetHeight() / 2, pdfDoc.GetPageNumber(page), TextAlignment.CENTER, VerticalAlignment.MIDDLE, 45);
+                canvasWatermark1.Close();
 
-                // Watermark String text
-                string watermark = txtWatermark.Text;
-             
-                    for (int idx = 0; idx < document.Pages.Count; idx++)
-                    {
-                        var page = document.Pages[idx];
-
-                        if (rbFront.Checked == true)
-                        {
-                            // Get an XGraphics object for drawing beneath the existing content
-                            var gfx = XGraphics.FromPdfPage(page, XGraphicsPdfPageOptions.Append);
-
-                            // Get the size (in points) of the text
-                            var size = gfx.MeasureString(watermark, font);
-
-                            // Define a rotation transformation at the center of the page
-                            gfx.TranslateTransform(page.Width / 2, page.Height / 2);
-                            gfx.RotateTransform(-Math.Atan(page.Height / page.Width) * 180 / Math.PI);
-                            gfx.TranslateTransform(-page.Width / 2, -page.Height / 2);
-
-                            // Create a string format
-                            var format = new XStringFormat();
-                            format.Alignment = XStringAlignment.Near;
-                            format.LineAlignment = XLineAlignment.Near;
-
-
-                            XBrush brush = new XSolidBrush(XColor.FromArgb(0, redColor, greenColor, blueColor));
-
-                            // Draw the string
-                            gfx.DrawString(watermark, font, brush,
-                            new XPoint((page.Width - size.Width) / 2, (page.Height - size.Height) / 2), format);
-                            //Dispose Graphics
-                            gfx.Dispose();
-                        }
-                        else
-                        {
-                            // Get an XGraphics object for drawing beneath the existing content
-                            var gfx = XGraphics.FromPdfPage(page, XGraphicsPdfPageOptions.Prepend);
-
-                            // Get the size (in points) of the text
-                            var size = gfx.MeasureString(watermark, font);
-
-                            // Define a rotation transformation at the center of the page
-                            gfx.TranslateTransform(page.Width / 2, page.Height / 2);
-                            gfx.RotateTransform(-Math.Atan(page.Height / page.Width) * 180 / Math.PI);
-                            gfx.TranslateTransform(-page.Width / 2, -page.Height / 2);
-
-                            // Create a string format
-                            var format = new XStringFormat();
-                            format.Alignment = XStringAlignment.Near;
-                            format.LineAlignment = XLineAlignment.Near;
-
-
-                            XBrush brush = new XSolidBrush(XColor.FromArgb(0, redColor, greenColor, blueColor));
-
-                            // Draw the string
-                            gfx.DrawString(watermark, font, brush,
-                            new XPoint((page.Width - size.Width) / 2, (page.Height - size.Height) / 2), format);
-                            //Dispose of graphics
-                            gfx.Dispose();
-                        }
-
-                    }
-                      
-                PdfSecuritySettings ss = document.SecuritySettings;
-                // Setting one of the passwords automatically sets the security level to
-                // PdfDocumentSecurityLevel.Encrypted128Bit.
-                ss.UserPassword = "";
-                ss.OwnerPassword = "mHfb6A7Rwp&b^$z2";
-
-                // Restrict some rights
-                ss.PermitAccessibilityExtractContent = false;
-                ss.PermitAnnotations = false;
-                ss.PermitAssembleDocument = false;
-                ss.PermitExtractContent = false;
-                ss.PermitFormsFill = true;
-                ss.PermitFullQualityPrint = true;
-                ss.PermitModifyDocument = false;
-                ss.PermitPrint = true;
-                string newFileName = sourceFile.Substring(0,sourceFile.Length-4) + " - WM.pdf";
+                // Creating a dictionary that maps resource names to graphics state parameter dictionaries
                 
-                // Save document
-                document.Save(newFileName);
-                
-                // Release the document from memory
-                document.Close();
+                PdfExtGState gs1 = new PdfExtGState().SetFillOpacity(0.2f);
+                over.SetExtGState(gs1);
+                over.RestoreState();
+            }
+            pdfDoc.Close();
 
-                // Messagebox to show completed
-                MessageBox.Show("PDF Completed!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // Secure PDF file
+            PdfReader pdfReader = new PdfReader(newNonSecureFile);
+            WriterProperties writerProperties = new WriterProperties();
+            writerProperties.SetStandardEncryption(USERPASS, OWNERPASS, EncryptionConstants.ALLOW_PRINTING, EncryptionConstants.ENCRYPTION_AES_128);
+            PdfWriter pdfWriter = new PdfWriter(new FileStream(newSecureFile , FileMode.Create), writerProperties);
+            PdfDocument pdfDocument = new PdfDocument(pdfReader, pdfWriter);
+            pdfDocument.Close();
 
-                // Open PDF on completion
-                if (chkOpen.Checked == true)
-                {
-                    Process.Start(newFileName);
-                }
-                else
-                {
-                    return;
-                }
-             }
-            catch (Exception ex)
+            // Messagebox to show completed
+            MessageBox.Show("Secure PDF Completed!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // Open PDF on completion
+            if (chkOpen.Checked == true)
             {
-                // Trap any error messages
-                MessageBox.Show($"There was an error: '{ex}'", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-             }
-                                  
+                Process.Start(newSecureFile);
+            }
+            else
+            {
+                return;
+            }
+
+            // Delete non secure version of file
+            File.Delete(newNonSecureFile);
         }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-
             // Load Product Version
             PrintProductVersion();
 

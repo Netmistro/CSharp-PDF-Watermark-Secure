@@ -43,8 +43,8 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtWatermark = new System.Windows.Forms.TextBox();
             this.rbOrange = new System.Windows.Forms.RadioButton();
-            this.rbPurple = new System.Windows.Forms.RadioButton();
-            this.rbPink = new System.Windows.Forms.RadioButton();
+            this.rbMagenta = new System.Windows.Forms.RadioButton();
+            this.rbBlack = new System.Windows.Forms.RadioButton();
             this.rbRed = new System.Windows.Forms.RadioButton();
             this.rbBlue = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -175,8 +175,8 @@
             // 
             this.groupBox2.Controls.Add(this.txtWatermark);
             this.groupBox2.Controls.Add(this.rbOrange);
-            this.groupBox2.Controls.Add(this.rbPurple);
-            this.groupBox2.Controls.Add(this.rbPink);
+            this.groupBox2.Controls.Add(this.rbMagenta);
+            this.groupBox2.Controls.Add(this.rbBlack);
             this.groupBox2.Controls.Add(this.rbRed);
             this.groupBox2.Controls.Add(this.rbBlue);
             this.groupBox2.Controls.Add(this.label2);
@@ -206,27 +206,27 @@
             this.rbOrange.Text = "Orange";
             this.rbOrange.UseVisualStyleBackColor = true;
             // 
-            // rbPurple
+            // rbMagenta
             // 
-            this.rbPurple.AutoSize = true;
-            this.rbPurple.Location = new System.Drawing.Point(283, 127);
-            this.rbPurple.Name = "rbPurple";
-            this.rbPurple.Size = new System.Drawing.Size(63, 21);
-            this.rbPurple.TabIndex = 6;
-            this.rbPurple.TabStop = true;
-            this.rbPurple.Text = "Purple";
-            this.rbPurple.UseVisualStyleBackColor = true;
+            this.rbMagenta.AutoSize = true;
+            this.rbMagenta.Location = new System.Drawing.Point(283, 127);
+            this.rbMagenta.Name = "rbMagenta";
+            this.rbMagenta.Size = new System.Drawing.Size(78, 21);
+            this.rbMagenta.TabIndex = 6;
+            this.rbMagenta.TabStop = true;
+            this.rbMagenta.Text = "Magenta";
+            this.rbMagenta.UseVisualStyleBackColor = true;
             // 
-            // rbPink
+            // rbBlack
             // 
-            this.rbPink.AutoSize = true;
-            this.rbPink.Location = new System.Drawing.Point(220, 127);
-            this.rbPink.Name = "rbPink";
-            this.rbPink.Size = new System.Drawing.Size(49, 21);
-            this.rbPink.TabIndex = 6;
-            this.rbPink.TabStop = true;
-            this.rbPink.Text = "Pink";
-            this.rbPink.UseVisualStyleBackColor = true;
+            this.rbBlack.AutoSize = true;
+            this.rbBlack.Location = new System.Drawing.Point(220, 127);
+            this.rbBlack.Name = "rbBlack";
+            this.rbBlack.Size = new System.Drawing.Size(55, 21);
+            this.rbBlack.TabIndex = 6;
+            this.rbBlack.TabStop = true;
+            this.rbBlack.Text = "Black";
+            this.rbBlack.UseVisualStyleBackColor = true;
             // 
             // rbRed
             // 
@@ -330,8 +330,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton rbOrange;
-        private System.Windows.Forms.RadioButton rbPurple;
-        private System.Windows.Forms.RadioButton rbPink;
+        private System.Windows.Forms.RadioButton rbMagenta;
+        private System.Windows.Forms.RadioButton rbBlack;
         private System.Windows.Forms.RadioButton rbRed;
         private System.Windows.Forms.RadioButton rbBlue;
         private System.Windows.Forms.GroupBox groupBox3;
