@@ -50,6 +50,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.rbBack = new System.Windows.Forms.RadioButton();
             this.rbFront = new System.Windows.Forms.RadioButton();
+            this.btnCreateFolder = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -58,13 +59,13 @@
             // btnPDF
             // 
             this.btnPDF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.btnPDF.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPDF.Location = new System.Drawing.Point(392, 311);
+            this.btnPDF.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPDF.Location = new System.Drawing.Point(412, 573);
             this.btnPDF.Margin = new System.Windows.Forms.Padding(4);
             this.btnPDF.Name = "btnPDF";
             this.btnPDF.Size = new System.Drawing.Size(110, 35);
             this.btnPDF.TabIndex = 1;
-            this.btnPDF.Text = "&Watermark PDF";
+            this.btnPDF.Text = "&Watermark";
             this.btnPDF.UseVisualStyleBackColor = false;
             this.btnPDF.Click += new System.EventHandler(this.btnPDF_Click);
             // 
@@ -75,33 +76,34 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.Highlight;
             this.label1.Location = new System.Drawing.Point(11, 26);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 17);
+            this.label1.Size = new System.Drawing.Size(68, 21);
             this.label1.TabIndex = 1;
             this.label1.Text = "File Path";
             // 
             // txtFilePath
             // 
+            this.txtFilePath.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFilePath.Location = new System.Drawing.Point(15, 48);
             this.txtFilePath.Margin = new System.Windows.Forms.Padding(4);
             this.txtFilePath.Multiline = true;
             this.txtFilePath.Name = "txtFilePath";
-            this.txtFilePath.Size = new System.Drawing.Size(340, 76);
+            this.txtFilePath.Size = new System.Drawing.Size(358, 76);
             this.txtFilePath.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.Highlight;
             this.label2.Location = new System.Drawing.Point(9, 21);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(33, 17);
+            this.label2.Size = new System.Drawing.Size(36, 21);
             this.label2.TabIndex = 1;
             this.label2.Text = "Text";
             // 
@@ -109,7 +111,7 @@
             // 
             this.lblVersionNumber.AutoSize = true;
             this.lblVersionNumber.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVersionNumber.Location = new System.Drawing.Point(392, 397);
+            this.lblVersionNumber.Location = new System.Drawing.Point(26, 680);
             this.lblVersionNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblVersionNumber.Name = "lblVersionNumber";
             this.lblVersionNumber.Size = new System.Drawing.Size(45, 13);
@@ -130,7 +132,8 @@
             // btnExit
             // 
             this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.btnExit.Location = new System.Drawing.Point(392, 353);
+            this.btnExit.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.Location = new System.Drawing.Point(412, 615);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(110, 35);
             this.btnExit.TabIndex = 2;
@@ -141,20 +144,21 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(116, 9);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(129, 10);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(269, 30);
+            this.label4.Size = new System.Drawing.Size(274, 30);
             this.label4.TabIndex = 1;
             this.label4.Text = "Watermark PDF Document";
             // 
             // chkOpen
             // 
             this.chkOpen.AutoSize = true;
-            this.chkOpen.Location = new System.Drawing.Point(395, 160);
+            this.chkOpen.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkOpen.Location = new System.Drawing.Point(417, 160);
             this.chkOpen.Name = "chkOpen";
-            this.chkOpen.Size = new System.Drawing.Size(85, 21);
+            this.chkOpen.Size = new System.Drawing.Size(94, 24);
             this.chkOpen.TabIndex = 3;
             this.chkOpen.Text = "Open PDF";
             this.chkOpen.UseVisualStyleBackColor = true;
@@ -164,9 +168,10 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtFilePath);
             this.groupBox1.Controls.Add(this.btnBrowse);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(16, 57);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(369, 179);
+            this.groupBox1.Size = new System.Drawing.Size(389, 179);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Select File";
@@ -180,27 +185,32 @@
             this.groupBox2.Controls.Add(this.rbRed);
             this.groupBox2.Controls.Add(this.rbBlue);
             this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(16, 251);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(369, 159);
+            this.groupBox2.Size = new System.Drawing.Size(389, 423);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Watermark";
             // 
             // txtWatermark
             // 
+            this.txtWatermark.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtWatermark.Location = new System.Drawing.Point(13, 42);
             this.txtWatermark.Multiline = true;
             this.txtWatermark.Name = "txtWatermark";
-            this.txtWatermark.Size = new System.Drawing.Size(340, 79);
+            this.txtWatermark.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtWatermark.Size = new System.Drawing.Size(360, 338);
             this.txtWatermark.TabIndex = 7;
+            this.txtWatermark.Text = "Issued From: - RADIAN H.A. Limited\r\nIssued To: - \r\nInvoice Date: - \r\nInvoice No.:" +
+    " - \r\nPO No.: - \r\nDN No.: - \r\n";
             // 
             // rbOrange
             // 
             this.rbOrange.AutoSize = true;
-            this.rbOrange.Location = new System.Drawing.Point(72, 127);
+            this.rbOrange.Location = new System.Drawing.Point(76, 396);
             this.rbOrange.Name = "rbOrange";
-            this.rbOrange.Size = new System.Drawing.Size(70, 21);
+            this.rbOrange.Size = new System.Drawing.Size(76, 24);
             this.rbOrange.TabIndex = 6;
             this.rbOrange.TabStop = true;
             this.rbOrange.Text = "Orange";
@@ -209,9 +219,9 @@
             // rbMagenta
             // 
             this.rbMagenta.AutoSize = true;
-            this.rbMagenta.Location = new System.Drawing.Point(283, 127);
+            this.rbMagenta.Location = new System.Drawing.Point(287, 396);
             this.rbMagenta.Name = "rbMagenta";
-            this.rbMagenta.Size = new System.Drawing.Size(78, 21);
+            this.rbMagenta.Size = new System.Drawing.Size(86, 24);
             this.rbMagenta.TabIndex = 6;
             this.rbMagenta.TabStop = true;
             this.rbMagenta.Text = "Magenta";
@@ -220,9 +230,9 @@
             // rbBlack
             // 
             this.rbBlack.AutoSize = true;
-            this.rbBlack.Location = new System.Drawing.Point(220, 127);
+            this.rbBlack.Location = new System.Drawing.Point(224, 396);
             this.rbBlack.Name = "rbBlack";
-            this.rbBlack.Size = new System.Drawing.Size(55, 21);
+            this.rbBlack.Size = new System.Drawing.Size(62, 24);
             this.rbBlack.TabIndex = 6;
             this.rbBlack.TabStop = true;
             this.rbBlack.Text = "Black";
@@ -231,9 +241,9 @@
             // rbRed
             // 
             this.rbRed.AutoSize = true;
-            this.rbRed.Location = new System.Drawing.Point(9, 127);
+            this.rbRed.Location = new System.Drawing.Point(13, 396);
             this.rbRed.Name = "rbRed";
-            this.rbRed.Size = new System.Drawing.Size(49, 21);
+            this.rbRed.Size = new System.Drawing.Size(53, 24);
             this.rbRed.TabIndex = 6;
             this.rbRed.TabStop = true;
             this.rbRed.Text = "Red";
@@ -242,9 +252,9 @@
             // rbBlue
             // 
             this.rbBlue.AutoSize = true;
-            this.rbBlue.Location = new System.Drawing.Point(156, 127);
+            this.rbBlue.Location = new System.Drawing.Point(160, 396);
             this.rbBlue.Name = "rbBlue";
-            this.rbBlue.Size = new System.Drawing.Size(50, 21);
+            this.rbBlue.Size = new System.Drawing.Size(56, 24);
             this.rbBlue.TabIndex = 6;
             this.rbBlue.TabStop = true;
             this.rbBlue.Text = "Blue";
@@ -254,7 +264,8 @@
             // 
             this.groupBox3.Controls.Add(this.rbBack);
             this.groupBox3.Controls.Add(this.rbFront);
-            this.groupBox3.Location = new System.Drawing.Point(395, 57);
+            this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(417, 57);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(127, 92);
             this.groupBox3.TabIndex = 6;
@@ -266,7 +277,7 @@
             this.rbBack.AutoSize = true;
             this.rbBack.Location = new System.Drawing.Point(6, 53);
             this.rbBack.Name = "rbBack";
-            this.rbBack.Size = new System.Drawing.Size(52, 21);
+            this.rbBack.Size = new System.Drawing.Size(58, 24);
             this.rbBack.TabIndex = 6;
             this.rbBack.TabStop = true;
             this.rbBack.Text = "Back";
@@ -277,17 +288,32 @@
             this.rbFront.AutoSize = true;
             this.rbFront.Location = new System.Drawing.Point(6, 26);
             this.rbFront.Name = "rbFront";
-            this.rbFront.Size = new System.Drawing.Size(56, 21);
+            this.rbFront.Size = new System.Drawing.Size(61, 24);
             this.rbFront.TabIndex = 6;
             this.rbFront.TabStop = true;
             this.rbFront.Text = "Front";
             this.rbFront.UseVisualStyleBackColor = true;
             // 
+            // btnCreateFolder
+            // 
+            this.btnCreateFolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.btnCreateFolder.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreateFolder.Location = new System.Drawing.Point(412, 530);
+            this.btnCreateFolder.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCreateFolder.Name = "btnCreateFolder";
+            this.btnCreateFolder.Size = new System.Drawing.Size(110, 35);
+            this.btnCreateFolder.TabIndex = 7;
+            this.btnCreateFolder.Text = "&Create Folder";
+            this.btnCreateFolder.UseVisualStyleBackColor = false;
+            this.btnCreateFolder.Click += new System.EventHandler(this.btnCreateFolder_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(536, 425);
+            this.ClientSize = new System.Drawing.Size(574, 702);
+            this.ControlBox = false;
+            this.Controls.Add(this.btnCreateFolder);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.chkOpen);
@@ -338,6 +364,7 @@
         private System.Windows.Forms.RadioButton rbBack;
         private System.Windows.Forms.RadioButton rbFront;
         private System.Windows.Forms.TextBox txtWatermark;
+        private System.Windows.Forms.Button btnCreateFolder;
     }
 }
 
